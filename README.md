@@ -1,6 +1,20 @@
 # README.md
 
 # 소개
+YoloX
+
+YOLOX는 기본적으로 1 Stage Detector로 Input - Backbone - Neck - Dense Prediction의 구조를 가진다.
+YOLOX는 Darknet53의 Backbone을 통해 Feature Map을 추출하며, SPP Layer를 통해 성능을 개선한다.
+FPN을 통해 Multi-Scale Feature Map을 얻고 이를 통해 작은 해상도의 Feature Map에서는 큰 Object를 추출하고 큰 해상도의Feature Map에서는 작은 Object를 추출하게끔 한 Neck 구조를 차용하였다.
+최종적으로 Head 부분에서는 기존 YOLOv3와 달리 Decoupled Head를 사용하였다.
+
+-Feature Pyramid Network는 임의의 크기의 single-scale 이미지를 convolutional network에 입력하여 다양한 scale의 feature map을 출력하는 네트워크입니다.
+
+-SPP
+Convolution Layer로 부터 feature map을 입력 받는다.
+받은 입력을 사전적으로 정해진 영역으로 나눈다. 
+각 피라미드의 한 칸을 bin이라고 부르며, 각 bin에 대해서 max pooling 연산을 적용한다.
+max pooling의 결과를 이어 붙여 출력으로 내봅니다.
 
 다중 객체 추적(Multi Object Tracking, MOT)은 연속된 프레임 속에서 다중 객체에 대한 bounding box와 ID를 지속적으로 추적하는 것을 목표로 합니다. 대부분의 방법은 신뢰도(confidence score)가 임계값(threshold)보다 높게 검출된 객체의 bounding box를 연결하여 ID를 부여합니다.
 
